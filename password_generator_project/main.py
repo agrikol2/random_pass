@@ -1,9 +1,9 @@
-from module_1.main_rand_pass import generate, is_valid_num, get_info
+from module_1.generator import generate
 
 
-def main():
+def main() -> None:
     generate()
 
 
-if __name__ == "main":
+if __name__ == "__main__":
     main()
