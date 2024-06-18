@@ -1,53 +1,39 @@
+from string import ascii_lowercase, ascii_uppercase, digits, punctuation
+
+
+def need_or_not(answer: str) -> bool:
+    answer: str = answer.lower()
+    while True:
+        if answer != "да" and answer != "нет":
+            answer = input("Нужно ввести 'Да' или 'Нет': ")
+        else:
+            return answer == "да"
+
+
 def get_info() -> str:
 
-    digits = "0123456789"
-    lowercase_letters = "abcdefghijklmnopqrstuvwxyz"
-    uppercase_letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    punctuation = "!#$%&*+-=?@^_."
+    chars: str = ""
 
-    chars = ""
+    if need_or_not(input("Настроить пароль? Введи 'Да' или 'Нет': ")):
+        if need_or_not(input("Включать ли цифры? Введи 'Да' или 'Нет': ")):
+            chars += digits
 
-    # digit = input("Включать ли цифры 0123456789? ").lower()
-    # bukv_caps = input(
-    #     "Включать ли прописные буквы ABCDEFGHIJKLMNOPQRSTUVWXYZ? "
-    # ).lower()
-    # bukv_low = input(
-    #     "Включать ли строчные буквы abcdefghijklmnopqrstuvwxyz? "
-    # ).lower()
-    # simv = input("Включать ли символы !#$%&*+-=?@^_? ").lower()
-    # neo_simv = input(
-    #     "Исключать ли неоданозначные символы il1Lo0O? "
-    # ).lower()
+        if need_or_not(input("Включать ли заглавные буквы? Введи 'Да' или 'Нет': ")):
+            chars += ascii_uppercase
 
-    def need_or_not():
-        while True:
-            num = input("Введи да или нет:  ").lower()
-            if num != "да" and num != "нет":
-                print('Нужно ввести "да" или "нет" !')
-            elif num == "да":
-                return True
-            elif num == "нет":
-                return False
+        if need_or_not(input("Включать ли строчные буквы? Введи 'Да' или 'Нет': ")):
+            chars += ascii_lowercase
 
-    print("Включать ли цифры 0123456789? ")
-    if need_or_not():
-        chars += digits
+        if need_or_not(input("Включать ли знаки пунктуации? Введи 'Да' или 'Нет': ")):
+            chars += punctuation
 
-    print("Включать ли прописные буквы ABCDEFGHIJKLMNOPQRSTUVWXYZ?")
-    if need_or_not():
-        chars += uppercase_letters
-
-    print("Включать ли строчные буквы abcdefghijklmnopqrstuvwxyz? ")
-    if need_or_not():
-        chars += lowercase_letters
-
-    print("Включать ли символы !#$%&*+-=?@^_? ")
-    if need_or_not():
-        chars += punctuation
-
-    print("Исключать ли неоданозначные символы il1Lo0O? ")
-    if need_or_not():
-        for i in "il1Lo0O":
-            chars = chars.replace(i, "")
-
-    return chars
+        if need_or_not(
+            input("Исключать ли неоданозначные символы il1Lo0O? Введи 'Да' или 'Нет': ")
+        ):
+            for i in "il1Lo0O":
+                chars = chars.replace(i, "")
+    if chars:
+        return chars
+    else:
+        print("Будут использованы цифры, буквы, знаки пунктуации.")
+        return digits + ascii_uppercase + ascii_lowercase + punctuation
