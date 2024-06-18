@@ -1,4 +1,4 @@
-def get_nums() -> bool:
+def get_nums() -> tuple[int]:
 
     while True:
         try:
@@ -14,3 +14,5 @@ def get_nums() -> bool:
             print("Нужно ввести число!")
 
     return pass_len, pass_count
+
+

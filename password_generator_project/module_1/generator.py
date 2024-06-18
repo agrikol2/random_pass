@@ -3,7 +3,7 @@ from module_1.get_nums import get_nums
 import random
 
 
-def generate_password(length: int, chars: int):
+def generate_password(length: int, chars: int) -> str:
     password: str = ""
     for _ in range(length):
         password += random.choice(chars)

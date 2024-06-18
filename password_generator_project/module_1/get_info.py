@@ -30,8 +30,7 @@ def get_info() -> str:
         if need_or_not(
             input("Исключать ли неоданозначные символы il1Lo0O? Введи 'Да' или 'Нет': ")
         ):
-            for i in "il1Lo0O":
-                chars = chars.replace(i, "")
+            chars = chars.strip('il1Lo0O')
     if chars:
         return chars
     else:
